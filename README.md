@@ -1,4 +1,5 @@
 <div align="center">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/6362174/265280638-8ea5e6d6-caf2-4a1c-ae79-0a76185e2d4f.png" width="256">
     <h1>SwiftyLogger</h1>
     <h3>A simple and flexible logging library written in Swift</h3>
 </div>
@@ -121,7 +122,7 @@ logFatal(message: "Debug log", file: "Main.swift", function: "show()", line: 21,
 logFatal(message: "Debug log", file: "Main.swift", function: "show()", line: 21, timestamp: Date(), threadName: "Main")
 ```
 
-### Console logger
+### Console Logger
 Default Console Logger uses `print` function to display log messages:
 
 ```swift
@@ -129,18 +130,18 @@ let logger = Logger()
     .addConsole()
 ```
 
-### File logger
+### File Logger
 By default, the File Logger saves log messages in `application.log` file located in `Caches` folder:
 
 ```swift
 let logger = Logger()
-    .addFileLogger()
+    .addFile()
 ```
 
 The name of the file can be changed:
 ```swift
 let logger = Logger()
-    .addFileLogger(fileName: "myLogs.log")
+    .addFile(fileName: "myLogs.log")
 ```
 
 Also the location of the file can be changed:
@@ -148,28 +149,28 @@ Also the location of the file can be changed:
 let url = URL(path: "/path/to/file.log")!
 
 let logger = Logger()
-    .addFileLogger(fileURL: url)
+    .addFile(fileURL: url)
 ```
 
-### Rotating File logger
-The Rotating File logger saves log messages into log file. When the size of the log file exceeds the maximum size, then the logs are transferred to archive file.
+### Rotating File Logger
+The Rotating File Logger saves log messages into log file. When the size of the log file exceeds the maximum size, then the logs are transferred to archive file.
 By default, the Rotating File Logger saves log messages in `application.log` file located in `Caches` folder. The archive logs are stored in `application.log` file:
 
 ```swift
 let logger = Logger()
-    .addRotatingFileLogger()
+    .addRotatingFile()
 ```
 
 By default the maximum log file size is set to 5MB, but can be changed with `maximumFileSizeInBytes`:
 ```swift
 let logger = Logger()
-    .addRotatingFileLogger(maximumFileSizeInBytes: 1_048_576)
+    .addRotatingFile(maximumFileSizeInBytes: 1_048_576)
 ```
 
 The name of both files can be changed:
 ```swift
 let logger = Logger()
-    .addFileLogger(fileName: "myLogs.log", archiveFileName: "myArchiveLogs.log")
+    .addFile(fileName: "myLogs.log", archiveFileName: "myArchiveLogs.log")
 ```
 
 Also the location of both files can be changed:
@@ -178,7 +179,7 @@ let logFileUrl = URL(path: "/path/to/file.log")!
 let archiveFileUrl = URL(path: "/path/to/archive.log")!
 
 let logger = Logger()
-    .addFileLogger(fileURL: url, archiveLogFileURL: archiveFileUrl)
+    .addFile(fileURL: url, archiveLogFileURL: archiveFileUrl)
 ```
 
 ### Subsystem and category
